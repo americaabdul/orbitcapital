@@ -16,6 +16,10 @@ body {
     background-image: 
         radial-gradient(circle at 25% 25%, rgba(187, 23, 23, 0.03) 0%, transparent 50%),
         radial-gradient(circle at 75% 75%, rgba(187, 23, 23, 0.02) 0%, transparent 50%);
+    /* Enhanced mobile performance */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .container {
@@ -60,6 +64,9 @@ body {
 .logo-img {
     height: 40px;
     width: auto;
+    /* Mobile optimization */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 .company-name {
@@ -458,6 +465,11 @@ body {
     position: absolute;
     top: 15px;
     right: 20px;
+    /* Enhanced touch target for mobile */
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 4px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-menu-toggle:hover {
@@ -549,5 +561,48 @@ body {
         width: 45px;
         height: 45px;
         font-size: 18px;
+    }
+}
+
+/* Mobile-Specific Performance Optimizations */
+@media (max-width: 768px) {
+    /* Optimize images for mobile */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    /* Improve touch targets for mobile */
+    button, 
+    input[type="button"], 
+    input[type="submit"], 
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Enhanced form usability on mobile */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    textarea,
+    select {
+        font-size: 16px; /* Prevents zoom on iOS */
+        -webkit-appearance: none;
+        border-radius: 0; /* Reset iOS styling */
+    }
+    
+    /* Optimize animations for mobile performance */
+    * {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    
+    /* Improve text readability on mobile */
+    body {
+        font-size: 16px;
+        line-height: 1.5;
     }
 }
